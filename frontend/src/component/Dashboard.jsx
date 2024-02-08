@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom"
+
 export function Dashboard() {
+    const navigate = useNavigate();
+    const onChangeHandler = () => {
+        navigate('/sendMoney');
+    }
     return (
         <div>
             <div className = 'grid grid-cols-2 p-6 border-t-4'>
@@ -19,7 +25,7 @@ export function Dashboard() {
                     <p className = 'pt-3'>Ameer Jafar</p>
                 </div>
                 <div className = 'ml-auto pr-10'>
-                    <button className = 'end-element w-36 h-10 end-element bg-black text-white rounded-lg text-center'>send money</button>
+                    <button className = 'end-element w-36 h-10 end-element bg-black text-white rounded-lg text-center' onClick = {onChangeHandler}>send money</button>
                 </div>
             </div>
         </div>      

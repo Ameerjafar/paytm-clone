@@ -7,16 +7,12 @@ export function Signin() {
 
     const navigate = useNavigate();
     const sumbit = async () => {
-        try {
-            const response = await axios.post('http://localhost:3000/api/v1/signin', {
-                username: email,
-                password: password
-            });
-            console.log(response.json);
-            navigate('/dashboard');
-        }catch(error) {
-            console.log('your email is not correct');
-        }
+        const response = await axios.post('http://localhost:3000/api/v1/user/signin', {
+            username: email,
+            password: password
+        });
+        console.log(response.data);
+        navigate('/dashboard');
         
     }
     const handleChange = (events) => {
