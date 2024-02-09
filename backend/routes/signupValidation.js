@@ -21,7 +21,7 @@ const signupValidation = async (req, res, next) => {
     if(userDetails.error) {
         res.status(403).json({message: 'user credentials are not satisfying the condition'})
     }
-    else {
+    else { 
         const username = req.body.username;
         const existingUser = await User.findOne({username});
         if(existingUser) {
@@ -32,7 +32,10 @@ const signupValidation = async (req, res, next) => {
             userId: user._id,
             balance: 1 + Math.random() * 10000
         })
-        res.status(200).send({message: 'email was created'});
+        res.status(200).send({
+            firsName: firstName,
+            secondName: secondName
+        });
     }
 }
 

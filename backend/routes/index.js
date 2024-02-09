@@ -4,7 +4,7 @@ const router = express.Router();
 
 const user = require('./user');
 
-const  accountReader = require('./accouts');
+const  accountReader = require('./accounts');
 
 router.use('/user', user);
 router.use('/account', accountReader);  

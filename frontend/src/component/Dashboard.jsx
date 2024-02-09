@@ -1,19 +1,17 @@
-import { useNavigate } from "react-router-dom"
-import axios from 'axios';
-export function Dashboard() {
-    const navigate = useNavigate();
-    const [balance, setBalance] = useState(0);
-    const [userId, setUserId] = useState('');
-    useEffect(() => {
-        const balanceCheck = () => {
-            const response = axios.post('http://localhost:3000/v1/api/accounts/balance', {
 
-            })
-        }
-    }, [balance])
-    const onChangeHandler = () => {
-        navigate('/sendMoney');
+import { useState } from "react";
+import { Users } from "./Users";
+import axios from 'axios';
+export function Dashboard({ userId }) {
+    const [balance, setBalance] = useState(0);
+    const balanceCheck = async () => {
+        const response = await axios.post('http://localhost:3000/api/v1/account/balance', {
+            userId: userId
+        });
+        setBalance(response.data.balance);
+        console.log(response.data.balance);
     }
+    balanceCheck();
     return (
         <div>
             <div className = 'grid grid-cols-2 p-6 border-t-4'>
@@ -24,19 +22,11 @@ export function Dashboard() {
                 </div>
             </div>
             <div className = 'border-t-2 p-10 pl-5 pb-5'>
-                <div className = 'font-bold text-2xl'>YOUR BALANCE: {}</div>
+                <div className = 'font-bold text-2xl'>YOUR BALANCE: {balance}</div>
                 <div className = 'font-bold  pt-10 pb-5 text-2xl'>User</div>
                 <input className = 'w-full border-2 rounded-lg h-8' type = 'text' placeholder = 'find user...'></input>
             </div>
-            <div className = 'flex pl-5'>
-                <div className = 'flex gap-2'>
-                    <p className = 'w-12 h-12 bg-gray-300 rounded-full text-center pt-3'>A</p>
-                    <p className = 'pt-3'>Ameer Jafar</p>
-                </div>
-                <div className = 'ml-auto pr-10'>
-                    <button key = '' className = 'end-element w-36 h-10 end-element bg-black text-white rounded-lg text-center' onClick = {onChangeHandler}>send money</button>
-                </div>
-            </div>
+            <Users />
         </div>      
     )
 }

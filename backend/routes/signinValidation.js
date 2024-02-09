@@ -9,7 +9,7 @@ const signinValidation = async (req, res, next) => {
     const success = await User.findOne(validation);
     if(success) {
         const token = jwt.sign({userId: success._id}, JWT_SECRET);
-        res.status(200).json({message: token});
+        res.status(200).json({message: success._id});
         console.log(token); 
     }
     else {

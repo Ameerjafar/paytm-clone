@@ -9,6 +9,7 @@ router.post('/balance', async (req, res) => {
     })
     if(accounts) {
         res.status(200).json({balance: accounts.balance});
+        console.log(accounts.balance);
     }
 })
 router.post('/transfer', async (req, res) => {

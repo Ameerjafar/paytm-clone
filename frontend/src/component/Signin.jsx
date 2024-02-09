@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
-export function Signin() {
+export function Signin({ setUserId }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -10,9 +10,9 @@ export function Signin() {
             username: email,
             password: password
         });
-        console.log(response.data);
-        navigate('/dashboard');
-        
+        setUserId(response.data.message);
+        console.log(response.data.message);
+        navigate('/dashboard');        
     }
     const handleChange = (events) => {
         setEmail(events.target.value);

@@ -1,11 +1,10 @@
-import { useState } from "react"
+
 import axios from 'axios';
 export function SendMoney() {
-    const [trans, settans] = useState(0);
-    const transfer = async () => {
-        const response = await axios.post('http://localhost:3000/api/v1/account', {
-            
-        })
+        const transfer = async () => {
+            const response = await axios.post('http://localhost:3000/api/v1/account/transfer', {
+                userId: userId
+            });
     }
     const money = (events) => {
         settans(events.target.value);
