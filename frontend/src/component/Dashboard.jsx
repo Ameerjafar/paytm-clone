@@ -1,7 +1,16 @@
 import { useNavigate } from "react-router-dom"
-
+import axios from 'axios';
 export function Dashboard() {
     const navigate = useNavigate();
+    const [balance, setBalance] = useState(0);
+    const [userId, setUserId] = useState('');
+    useEffect(() => {
+        const balanceCheck = () => {
+            const response = axios.post('http://localhost:3000/v1/api/accounts/balance', {
+
+            })
+        }
+    }, [balance])
     const onChangeHandler = () => {
         navigate('/sendMoney');
     }
@@ -15,7 +24,7 @@ export function Dashboard() {
                 </div>
             </div>
             <div className = 'border-t-2 p-10 pl-5 pb-5'>
-                <div className = 'font-bold text-2xl'>YOUR BALANCE:  $50000</div>
+                <div className = 'font-bold text-2xl'>YOUR BALANCE: {}</div>
                 <div className = 'font-bold  pt-10 pb-5 text-2xl'>User</div>
                 <input className = 'w-full border-2 rounded-lg h-8' type = 'text' placeholder = 'find user...'></input>
             </div>
@@ -25,7 +34,7 @@ export function Dashboard() {
                     <p className = 'pt-3'>Ameer Jafar</p>
                 </div>
                 <div className = 'ml-auto pr-10'>
-                    <button className = 'end-element w-36 h-10 end-element bg-black text-white rounded-lg text-center' onClick = {onChangeHandler}>send money</button>
+                    <button key = '' className = 'end-element w-36 h-10 end-element bg-black text-white rounded-lg text-center' onClick = {onChangeHandler}>send money</button>
                 </div>
             </div>
         </div>      
