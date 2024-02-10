@@ -1,14 +1,20 @@
-
 import axios from 'axios';
-export function SendMoney() {
+import { useState } from 'react';
+export function SendMoney({ userId, toId }) {
+    const [trans, settrans] = useState(0);
         const transfer = async () => {
             const response = await axios.post('http://localhost:3000/api/v1/account/transfer', {
-                userId: userId
+                userId: userId,
+                toId: toId,
+                amount: trans
             });
+            console.log(response.data);
     }
     const money = (events) => {
-        settans(events.target.value);
+        settrans(events.target.value);
     }
+    console.log(toId);
+    console.log(userId);
     return (
         <div className = 'h-screen flex items-center justify-center text-color bg-gray-400'>
             <div className = 'bg-white rounded-lg w-96 h-80'>
@@ -21,7 +27,7 @@ export function SendMoney() {
                 </div>
                 <div className = 'font-medium pl-10'>Amount (in Rs)</div>
                 <div className = 'pl-10 pr-10 pb-5'>
-                    <input onClick = {(events) => money} className = 'border-2 w-full h-8 rounded-lg' type = 'text' placeholder = 'Enter amount'></input>
+                    <input onClick = {(events) => money(events)} className = 'border-2 w-full h-8 rounded-lg' type = 'text' placeholder = 'Enter amount'></input>
                 </div>
                 <div className = 'pr-10 pl-10 pb-2'>
                     <button onClick = {transfer} className = 'bg-green-500 border-2 w-full h-8 rounded-lg'>transfer</button>

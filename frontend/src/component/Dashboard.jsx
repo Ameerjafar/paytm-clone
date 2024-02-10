@@ -1,15 +1,13 @@
-
-import { useState } from "react";
+import { useState } from "react";   
 import { Users } from "./Users";
 import axios from 'axios';
-export function Dashboard({ userId }) {
+export function Dashboard({ userId, setToId }) {
     const [balance, setBalance] = useState(0);
     const balanceCheck = async () => {
         const response = await axios.post('http://localhost:3000/api/v1/account/balance', {
             userId: userId
         });
-        setBalance(response.data.balance);
-        console.log(response.data.balance);
+        setBalance(response.data.balance);  
     }
     balanceCheck();
     return (
@@ -26,7 +24,7 @@ export function Dashboard({ userId }) {
                 <div className = 'font-bold  pt-10 pb-5 text-2xl'>User</div>
                 <input className = 'w-full border-2 rounded-lg h-8' type = 'text' placeholder = 'find user...'></input>
             </div>
-            <Users />
+            <Users setToId = { setToId }/>
         </div>      
     )
 }
