@@ -8,7 +8,9 @@ export function SendMoney({ userId, toId }) {
                 toId: toId,
                 amount: trans
             });
+            console.log(toId);
             console.log(response.data);
+
     }
     const money = (events) => {
         settrans(events.target.value);
