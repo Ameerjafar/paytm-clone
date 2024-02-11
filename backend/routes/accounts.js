@@ -26,6 +26,6 @@ router.post('/transfer', async (req, res) => {
     }
     const result1 = await Accounts.findByIdAndUpdate(existingAccount._id, {$inc: {balance: -amount}});
     const result2 = await Accounts.findByIdAndUpdate(receiver._id, {$inc: {balance: +amount}});
-    res.status(200).json({balance: existingAccount.balance});
+    res.status(200).json({balance: receiver});
 })
 module.exports = router;

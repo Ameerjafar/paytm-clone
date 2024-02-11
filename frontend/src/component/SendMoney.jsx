@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useState } from 'react';
 export function SendMoney({ userId, toId }) {
     const [amount, setAmount] = useState(0);
+    const [name, setName] = useState('');
+
     const transfer = async () => {
         console.log(amount);
         const response = await axios.post('http://localhost:3000/api/v1/account/transfer', {
@@ -25,7 +27,7 @@ export function SendMoney({ userId, toId }) {
                 </div>
                 <div className = 'flex p-5 pb-0 gap-2'>
                     <p className = 'w-12 h-12 rounded-full bg-green-500 flex items-center justify-center'>A</p>
-                    <p className = 'font-bold text-2xl'>FRIEND'S NAME</p>
+                    <p className = 'font-bold text-2xl'>Ameer jafar</p>
                 </div>
                 <div className = 'font-medium pl-10'>Amount (in Rs)</div>
                 <div className = 'pl-10 pr-10 pb-5'>
