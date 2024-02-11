@@ -7,7 +7,7 @@ export function Dashboard({ userId, setToId }) {
         const response = await axios.post('http://localhost:3000/api/v1/account/balance', {
             userId: userId
         });
-        setBalance(response.data.balance);  
+        setBalance(parseInt(response.data.balance));  
     }
     balanceCheck();
     return (

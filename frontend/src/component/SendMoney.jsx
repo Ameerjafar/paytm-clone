@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 export function SendMoney({ userId, toId }) {
     const [amount, setAmount] = useState(0);
-    const [name, setName] = useState('');
-
+    const navigate = useNavigate('');
     const transfer = async () => {
         console.log(amount);
         const response = await axios.post('http://localhost:3000/api/v1/account/transfer', {
@@ -11,8 +11,7 @@ export function SendMoney({ userId, toId }) {
             toId: toId,
             amount: parseInt(amount)
         });
-        console.log(toId);
-        console.log(response.data);
+        navigate('/dashboard');
     }
     const money = (events) => {
         setAmount(events.target.value);

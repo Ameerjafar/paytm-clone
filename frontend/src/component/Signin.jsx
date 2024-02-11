@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
-export function Signin({ setUserId }) {
+export function Signin({ setUserId, setreDirect}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -12,6 +12,7 @@ export function Signin({ setUserId }) {
         });
         setUserId(response.data.message);
         console.log(response.data.message);
+        setreDirect(true);
         navigate('/dashboard');        
     }
     const handleChange = (events) => {
@@ -38,7 +39,10 @@ export function Signin({ setUserId }) {
                     handleChangePassword(events);
                 }}></input><br></br>
                 <div className = 'flex items-center justify-center'>
-                <button onClick = {sumbit} className = "m-3 justify-center bg-black text-white rounded-lg p-2">submit</button>
+                    <button onClick = {sumbit} className = "m-3 justify-center bg-black text-white rounded-lg p-2">submit</button>
+                </div>
+                <div className = 'text-center'>
+                    <a className = 'font-bold' href = 'http://localhost:5173/signup'>create new account</a>
                 </div>
             </div>
         </div>
