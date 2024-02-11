@@ -25,7 +25,7 @@ router.post('/transfer', async (req, res) => {
         res.status(400).send({message: 'Insufficient balance'});
     }
     const result1 = await Accounts.findByIdAndUpdate(existingAccount._id, {$inc: {balance: -amount}});
-    const result2 = await Accounts.findByIdAndUpdate(receiver._Id, {$inc: {balance: +amount}});
+    const result2 = await Accounts.findByIdAndUpdate(receiver._id, {$inc: {balance: +amount}});
     res.status(200).json({balance: existingAccount.balance});
 })
 module.exports = router;

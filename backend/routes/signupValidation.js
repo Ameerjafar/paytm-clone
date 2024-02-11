@@ -33,7 +33,7 @@ const signupValidation = async (req, res, next) => {
             balance: 1 + Math.random() * 10000
         })
         res.status(200).send({
-            firsName: firstName,
+            firstName: firstName,
             secondName: secondName
         });
     }
