@@ -2,7 +2,6 @@ const express = require('express');
 
 const router = express.Router();
 const { Accounts } = require('../db');
-
 router.post('/balance', async (req, res) => {
     const accounts = await Accounts.findOne({
         userId: req.body.userId
